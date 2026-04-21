@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "sravyap1990/flask-app"
+    }
+
     stages {
 
 
