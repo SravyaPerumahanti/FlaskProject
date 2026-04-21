@@ -21,5 +21,20 @@ pipeline {
                 bat 'docker build -t flask-app .'
             }
         }
+
+	stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-hub-creds',
+                    usernameVariable: 'USER',
+                    passwordVariable: 'PASS'
+                )]) {
+                    bat '''
+                    docker login -u %USER% -p %PASS%
+                    docker push %DOCKER_IMAGE%
+                    '''
+                }
+            }
+        }
     }
 }
