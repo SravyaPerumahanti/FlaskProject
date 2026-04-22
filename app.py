@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello from Jenkins CI/CD!"
+    return "Hello from version2!"
 
 if __name__ == "__main__":
     # 0.0.0.0 allows external access (important for Docker later)
