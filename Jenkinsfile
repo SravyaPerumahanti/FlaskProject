@@ -40,5 +40,13 @@ pipeline {
                 }
             }
         }
+
+	stage('Deploy to Kubernetes') {
+            steps {
+	        bat 'set KUBECONFIG=C:\\Users\\Sravya P\\.kube\\config'
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
+            }
+        }
     }
 }
